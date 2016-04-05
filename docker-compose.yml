@@ -1,0 +1,32 @@
+web:
+  image: tutorial/nginx
+  ports:
+    - "8080:80"
+  volumes:
+    - /nmc/src:/var/www
+    - /nmc/src/vhost.conf:/etc/nginx/conf.d/vhost.conf
+  links:
+    - php
+
+php:
+  image: nmcteam/php56
+  volumes:
+    - /nmc/src/php-fpm.conf:/etc/php5/fpm/php-fpm.conf
+    - /nmc/src:/var/www
+  expose:
+    - 9000
+  links:
+    - db
+    
+db:
+  image: sameersbn/mysql
+  volumes:
+   - /var/lib/mysql
+  environment:
+   - DB_NAME=demoDb
+   - DB_USER=demoUser
+   - DB_PASS=demoPass
+  expose:
+   - 3306
+
+    
