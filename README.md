@@ -1,9 +1,22 @@
-I used an alternate base box for nginx (to avoid the confusing `CMD` entrypoint that `phusion/baseimage` provides). (FYI, the Dockerfile from the tutorial didn't work for me--nginx wouldn't work after a `docker run`, so I bagged it and went with another one.)
+# Introduction
+
+This is based on the code from the [*Docker for PHP Developers* tutorial on the *New Media Campaigns* site](http://www.newmediacampaigns.com/blog/docker-for-php-developers).
+
+The article progresses through a series of steps, but this code is what you'd end 
+
+# Tweaks
+
+Although this is based on code from the tutorial, I tweaked a few things based on feedback from the tutorial's comments, as well as workarounds for problems I encountered.
+
+I used an alternate base box for nginx (to avoid the confusing `CMD` entrypoint that `phusion/baseimage` provides). (FYI, the Dockerfile from the tutorial didn't work for me--nginx wouldn't work after a `docker run`, so that's another reason I bagged it and went with another one.)
 
 You'll see that there is no `images/nginx/start.sh`, as a result.
 
-FYI, I used the more modern `docker-machine`, instead of `boot2docker` commands.
+## `docker-machine` Instead of Direct `boot2docker` Incantations
+
+I used the more modern `docker-machine`, instead of `boot2docker` commands.
 Therefore, I installed Docker Toolbox, and *instead* of these commands:
+
 ```
 # I didn't use these
 boot2docker init
@@ -24,10 +37,12 @@ Get the command which will establish the `docker-machine` context:
 docker-machine env nmc
 ```
 
-In windows, the command that establishes the `docker-machine` context (for the `nmc` docker machine) is the following. OSX/Linux will be different.
+In Windows, the command that establishes the `docker-machine` context (for the `nmc` docker machine) is the following. OSX/Linux will be different.
 ```
 FOR /f "tokens=*" %i IN ('docker-machine env nmc') DO %i
 ```
+
+## Optional Explicit VirtualBox Shared Folder
 
 Windows users: If your project files live in `C:\Users`, then I think you'll be okay without the following explicit VirtualBox shared folder. I don't usually work out of my home directory, so I created a share.
 
@@ -48,6 +63,10 @@ sudo mkdir /nmc
 sudo mount -t vboxsf -o uid=1000,gid=50 nmc /nmc
 exit
 ```
+
+## `docker run`
+
+By the end of the tutorial, you'll be using `docker-compose` instead of these direct `docker run` commands, but until you get to the `docker-compose` part, this is how to follow along.
 
 Because of the different base box (which isn't Ubuntu-based, as `phusion/baseimage` is), the `vhost.conf` path is different, so the `docker run` command's volume mount path looks different.
 
@@ -72,7 +91,7 @@ docker run ^
     tutorial/nginx
 ```
 
-On OSX/Linux, you're lucky, as you can use the portable version from the tutorial (but with a tweak for the vhost.conf path):
+On OSX/Linux, you're lucky, as you can use the portable version from the tutorial (but with the same tweak for the vhost.conf path):
 
 ```
 docker run \
