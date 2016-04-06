@@ -24,5 +24,8 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 
 EXPOSE 80 443
 
-// the phusion 
+# the phusion version from the tutorial used CMD ["/sbin/my_init"], but it 
+#  didn't start the service properly, and it was roundabout and confusing, to
+#  boot. i think doing it this straightforward way makes it more clear to a
+#  beginner (like me :).
 CMD ["nginx", "-g", "daemon off;"]
