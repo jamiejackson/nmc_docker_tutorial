@@ -2,7 +2,10 @@
 
 This is based on the code from the [*Docker for PHP Developers* tutorial on the *New Media Campaigns* site](http://www.newmediacampaigns.com/blog/docker-for-php-developers).
 
-The article progresses through a series of steps, but this code is what you'd end 
+The tutorial progresses through a series of steps, but this code is where you'd be at the *end* of the tutorial. One side effect of this is that you'd want to use a more specific URI at the beginning (when there's just a static HTML page) vs. at the end of the article (when there's a dynamic PHP page).
+
+* Static HTML page's URI for the beginning of the tutorial: http://docker.dev:8080/index.html
+* Dynamic PHP page's URI for the end of the article: http://docker.dev:8080/ or http://docker.dev:8080/index.php
 
 # Tweaks
 
