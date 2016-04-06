@@ -101,3 +101,7 @@ docker run \
     -v $(pwd)/src:/var/www \
     tutorial/nginx;
 ````
+
+## `docker-compose`
+
+[`docker-compose.yml`](./docker-compose.yml) is configured for my environment (notice the volumes beginning with `/nmc/`). You'll need to change those to match your own environment, as you did for the `docker-run` commands.
