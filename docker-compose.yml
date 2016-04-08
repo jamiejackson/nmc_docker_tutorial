@@ -1,3 +1,4 @@
+
 web:
   image: tutorial/nginx
   ports:
@@ -29,4 +30,16 @@ db:
   expose:
    - 3306
 
-    
+## for kicks, uncomment this container to get cAdvisor at https://docker.dev:8081
+## what is the weird `/../` volume, you ask? https://git.io/vVMWj
+#
+#cadvisor:
+#  image: google/cadvisor
+#  ports:
+#    - "8081:8080"
+#  volumes:
+#    - "/../:/rootfs:ro"
+#    - "/var/run:/var/run:rw"
+#    - "/sys:/sys:ro"
+#    - "/var/lib/docker/:/var/lib/docker:ro"
+
