@@ -29,16 +29,28 @@ eval "$(boot2docker shellinit)"
 
 ...I used the following `docker-machine` commands. (Also, I had problems in `cygwin`, so I bagged it and went with the cheesy `cmd` prompt, instead.)
 
+### Setting up a Dedicated Docker Machine
+
+Note: You could use the default docker machine, but I thought I'd use a new one, `nmc`, just for this tutorial.
+
 ```
 docker-machine create --driver virtualbox nmc
 ```
 
-Set up `nmc` box's context in `docker-machine`.
+### Set up `nmc` box's context in `docker-machine`.
 
-Get the command which will establish the `docker-machine` context:
+When working with docker commands, using `docker-machine`, you can specify the context (docker machine) in which your commands will execute.
+
+#### *Get* the Command
+
+Get the command which will establish the `docker-machine` context. Note: This just outputs the *command* you'll execute to switch environments--it won't switch the environment by itself:
 ```
 docker-machine env nmc
 ```
+
+#### *Run* the Command
+
+Run the command that was output, above.
 
 In Windows, the command that establishes the `docker-machine` context (for the `nmc` docker machine) is the following. OSX/Linux will be different.
 ```
